@@ -49,10 +49,17 @@ def first_test(number_define, layers):
     current_number = layers[1]
     print(current_number, intento_verbose(number_define, current_number))
 
+def verify_win(response):
+    return response[0] == 4
+
+def print_history(history):
+    for log in history:
+        print(log[0], log[1][0:2])
+
 
 def main():
     print("Picas y Fijas!")
-    
+    history = []
     layers = create_configure()
     number_define = define_number()
     
@@ -60,7 +67,34 @@ def main():
     print('number:  ', number_define)
 
     first_test(number_define, layers)
+    salir = False
+    while not salir:
+        cadena = input('Introduce un numero de 4 cifras: ')
+        if cadena and len(cadena) == 4:
+            if len(cadena)==len(set(cadena)): # validate no elements repeat
+                current_number = [
+                    int(cadena[0]),
+                    int(cadena[1]),
+                    int(cadena[2]),
+                    int(cadena[3])
+                ]
+                print(current_number, intento_verbose(number_define, current_number))
+                response = check_configuration(number_define, current_number)
+                history.append([current_number, response])
 
+
+                gano = verify_win(response)
+                if gano:
+                    salir = True
+        elif cadena=='h':
+            print_history(history)
+        elif cadena=='e':
+            salir = True
+
+    if gano:    
+        print('GANO!!')
+    else:
+        print('PERDIO, el numero era: ', define_number)
 
 if __name__ == "__main__":
     main()
