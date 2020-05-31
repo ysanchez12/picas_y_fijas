@@ -6,3 +6,10 @@ El juego consiste en predecir el numero del opnente teniendo como guia las respu
 
 - fija: significa que el numero se encuentra en la posicion correcta
 - pica: significa que el numero se encuentra entre la congifuracion de numero pero no en la posicion correcta
+
+
+run in local
+```
+git clone https://github.com/ysanchez12/picas_y_fijas.git
+python main.py
+```
