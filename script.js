@@ -9,7 +9,9 @@ validArray = [1,2,3,4,5,7,8,9,0]
 
 function Rendirse() {
     console.log('Rendirse')
-    clearHistory()
+    number_define = getNumero()
+    elemento = document.getElementById("numero_adivinar");
+    elemento.innerHTML = number_define
 }
 
 function newGame() {
@@ -18,7 +20,7 @@ function newGame() {
     selectionarNuevoNumero()
     number_define = getNumero()
     elemento = document.getElementById("numero_adivinar");
-    elemento.innerHTML = number_define
+    elemento.innerHTML = 'XXXX'
     // clean history 
     clearHistory()
 }
