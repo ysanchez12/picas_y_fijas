@@ -7,6 +7,9 @@
     <title>Document</title>
 </head>
 <body>
+    <div id="numero_adivinar"></div>
+    <div id="numero_adivinar_oculto" hidden ></div>
+    <div id="numero_turno_oculto" hidden >0</div>
     <button id='btnNew'> Nuevo Juego </button>
     <br><br>
     <button id='btnFin'> Rendirse </button>
@@ -14,6 +17,17 @@
  
     <input type="text" id="number"> 
     <button id='myBtn'> Enviar Intento</button>
-    <div id="history"></div>
+    <br><br>
+    <table border="2">
+        <tr>
+            <th>Turno</th>
+            <th>Numero</th>
+            <th>Fijas</th>
+            <th>Picas</th>
+        </tr>
+        <tbody id="history">
+
+        </tbody>
+    </table>
 </body>
 </html>
