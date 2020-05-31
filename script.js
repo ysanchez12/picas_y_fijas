@@ -1,7 +1,12 @@
 document.addEventListener("DOMContentLoaded", function(event) {
     document.getElementById("myBtn").addEventListener("click", myFunction);
     document.getElementById("btnNew").addEventListener("click", newGame);
+    document.getElementById("btnFin").addEventListener("click", Rendirse);
 });
+
+function Rendirse() {
+    console.log('Rendirse')
+}
 
 function newGame() {
     console.log('nuevo juego')
