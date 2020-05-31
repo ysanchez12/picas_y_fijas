@@ -62,12 +62,33 @@ function shuffle(array) {
 
 function myFunction() {
     turno = nuevoTurno()
-    response = [1,2]
     current_number = document.getElementById("number").value;
-    agregarHistory(turno, current_number, response[0], response[1])
     document.getElementById('number').value = ''
+    
+    number_define = getNumero()
+    response = check_configuration(number_define, current_number)
+    
+    agregarHistory(turno, current_number, response[0], response[1])
 }
     
+
+function check_configuration(number_define, current_number) {
+    response = [0, 0]    // [F, P]
+    for (var i = 0; i < number_define.length; i++) {
+        if (number_define[i] == current_number[i]) {
+            response[0] = response[0] + 1
+        }
+    }
+    for (var i = 0; i < number_define.length; i++) {
+        if (current_number.includes(number_define[i])) {
+            response[1] = response[1] + 1
+        }
+    }
+    response[1] = response[1] - response[0]
+    return response
+}
+
+
 function nuevoTurno() {
     elemento = document.getElementById("numero_turno_oculto");
     turno = elemento.textContent 
@@ -75,8 +96,6 @@ function nuevoTurno() {
     elemento.innerHTML = turno 
     return turno
 }
-
-
 
 function agregarHistory(indice, value, fijas, picas) {
     var node_tr = document.createElement("tr");                 // Create a <tr> node
