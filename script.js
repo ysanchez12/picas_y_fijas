@@ -5,6 +5,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
     selectionarNuevoNumero();
 });
 
+validArray = [1,2,3,4,5,7,8,9,0]
+
 function Rendirse() {
     console.log('Rendirse')
     clearHistory()
@@ -13,6 +15,7 @@ function Rendirse() {
 function newGame() {
     console.log('nuevo juego')
     // seleccionar nuevo numero
+    selectionarNuevoNumero()
     number_define = getNumero()
     elemento = document.getElementById("numero_adivinar");
     elemento.innerHTML = number_define
@@ -21,7 +24,13 @@ function newGame() {
 }
 
 function selectionarNuevoNumero() {
-    text = 1234
+    arraySuffle = shuffle(validArray)
+    text = [
+        arraySuffle[0], 
+        arraySuffle[1], 
+        arraySuffle[2], 
+        arraySuffle[3], 
+    ].join('');
     elemento = document.getElementById("numero_adivinar_oculto");
     elemento.innerHTML = text 
 }
@@ -47,11 +56,16 @@ function deleteChild(element) {
     } 
 } 
 
+function shuffle(array) {
+    return array.sort(() => Math.random() - 0.5);
+  }
+
 function myFunction() {
     turno = nuevoTurno()
     response = [1,2]
     current_number = document.getElementById("number").value;
     agregarHistory(turno, current_number, response[0], response[1])
+    document.getElementById('number').value = ''
 }
     
 function nuevoTurno() {
