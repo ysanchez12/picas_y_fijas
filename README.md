@@ -13,3 +13,7 @@ run in local
 git clone https://github.com/ysanchez12/picas_y_fijas.git
 python main.py
 ```
+
+go to game!
+
+https://ysanchez12.github.io/picas_y_fijas/index
