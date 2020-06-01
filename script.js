@@ -63,16 +63,44 @@ function shuffle(array) {
   }
 
 function myFunction() {
-    turno = nuevoTurno()
     current_number = document.getElementById("number").value;
+    valid = validNumber(current_number)
+    if (valid) {
+        turno = nuevoTurno()
+        number_define = getNumero()
+        response = check_configuration(number_define, current_number)
+        agregarHistory(turno, current_number, response[0], response[1])
+    }
     document.getElementById('number').value = ''
-    
-    number_define = getNumero()
-    response = check_configuration(number_define, current_number)
-    
-    agregarHistory(turno, current_number, response[0], response[1])
 }
     
+function validNumber(current_number) {
+    if (!current_number) {
+        return false
+    } else if (isNaN(current_number)) {
+        return false
+    } else if (chkRepeat(current_number)) {
+        return false
+    } else if (current_number.length!==4) {
+        return false
+    }
+
+    
+    return true
+}
+
+function chkRepeat(word) {
+    var wordLower = word.toLowerCase();
+    var wordSet = new Set(wordLower);
+    var lenWord = wordLower.length;
+    var lenWordSet =wordSet.size;
+
+    if (lenWord === lenWordSet) {
+        return false
+    } else {
+        return true
+    }
+}
 
 function check_configuration(number_define, current_number) {
     response = [0, 0]    // [F, P]
